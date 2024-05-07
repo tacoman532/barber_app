@@ -2,18 +2,18 @@ import 'package:barber_app/widgets/app_bar_widget.dart';
 import 'package:barber_app/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 
-class CelebrityStylesPage extends StatefulWidget {
-  const CelebrityStylesPage({super.key});
+class PopularBarbersPage extends StatefulWidget {
+  const PopularBarbersPage({super.key});
 
   @override
-  State<CelebrityStylesPage> createState() => _CelebrityStylesPageState();
+  State<PopularBarbersPage> createState() => _PopularBarbersPageState();
 }
 
-class _CelebrityStylesPageState extends State<CelebrityStylesPage> {
+class _PopularBarbersPageState extends State<PopularBarbersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarWidget(title: "Celebrity Styles",),
+        appBar: AppBarWidget(title: "Popular Barbers",),
         backgroundColor: Colors.white,
         drawer: DrawerWidget(),
       body: Align(
@@ -24,7 +24,7 @@ class _CelebrityStylesPageState extends State<CelebrityStylesPage> {
             Padding(
               padding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 24.0),
               child: Text(
-                'Celebrity Hairstyles',
+                'Popular Barbers In Your Area',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
@@ -38,7 +38,21 @@ class _CelebrityStylesPageState extends State<CelebrityStylesPage> {
                 children: [
                   ListTile(
                     title: Text(
-                      'Lebron James',
+                      'Jeff',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    ),
+                    onTap: () {
+                      setState(() {
+                        Navigator.pushNamed(context, '/barb', arguments: {"name" : "Jeff"});
+                      });
+                    },
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Bob',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
@@ -47,7 +61,7 @@ class _CelebrityStylesPageState extends State<CelebrityStylesPage> {
                   ),
                   ListTile(
                     title: Text(
-                      'Justin Bieber',
+                      'Michael',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
@@ -56,7 +70,7 @@ class _CelebrityStylesPageState extends State<CelebrityStylesPage> {
                   ),
                   ListTile(
                     title: Text(
-                      'Drake',
+                      'Jason',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
@@ -65,16 +79,7 @@ class _CelebrityStylesPageState extends State<CelebrityStylesPage> {
                   ),
                   ListTile(
                     title: Text(
-                      'Chris Hemsworth',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Tom Cruise',
+                      'Kyle',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,

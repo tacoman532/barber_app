@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -78,6 +79,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   fontSize: 24,
                 ),
               ),
+              onTap: () {
+                setState(() {
+                  Navigator.pushNamed(context, '/celeb');
+                });
+              },
             ),
             ListTile(
               leading: Icon(
@@ -87,12 +93,59 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               title: Text(
                 'Popular Barbers',
                 style: TextStyle(
-                  color: Colors.grey.shade500,
+                  color: Colors.black,
                   fontSize: 24,
                 ),
               ),
+              onTap: () {
+                setState(() {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/popular');
+                });
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
+              title: Text(
+                'Profile',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 24,
+                ),
+              ),
+              onTap: () {
+                setState(() {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/prolog');
+                });
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.exit_to_app,
+                color: Colors.red,
+              ),
+              title: Text(
+                'Sign Out',
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 24,
+                ),
+              ),
+              onTap: () async {
+                try {
+                  await FirebaseAuth.instance.signOut();
+                  Navigator.pushReplacementNamed(context, '/prolog');
+                } catch (e) {
+                  print("Error signing out: $e");
+                }
+              },
             ),
           ],
-        ));
+        )
+    );
   }
 }

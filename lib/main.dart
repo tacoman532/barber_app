@@ -1,10 +1,22 @@
+import 'package:barber_app/screens/barber_screen.dart';
+import 'package:barber_app/screens/celebrity_styles_page.dart';
+import 'package:barber_app/screens/log_in_screen.dart';
+import 'package:barber_app/screens/popular_barbers_page.dart';
+import 'package:barber_app/screens/profile_screen.dart';
+import 'package:barber_app/screens/profilelogin_screen.dart';
+import 'package:barber_app/screens/signup_screen.dart';
 import 'package:barber_app/screens/splash_screen.dart';
 import 'package:barber_app/screens/trending_styles_page.dart';
 import 'package:flutter/material.dart';
-
 import 'screens/home_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
@@ -24,6 +36,13 @@ class MyApp extends StatelessWidget {
         '/': (context) => SplashPage(),
         '/home': (context) => HomePage(title: "barber app",),
         '/trend' : (context) => TrendingPage(),
+        '/celeb' : (context) => CelebrityStylesPage(),
+        '/popular' : (context) => PopularBarbersPage(),
+        '/barb' : (context) => BarberScreen(name: "bob"),
+        '/pro' : (context) => ProfilePage(),
+        '/prolog' : (context) => ProfileLogin(),
+        '/log': (context) => LoginPage(),
+        '/sign': (context) => SignupScreen(),
       },
     );
   }

@@ -19,6 +19,22 @@ class _MyHomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBarWidget(title: "Home",),
         drawer: DrawerWidget(),
-        body: Column());
+        body: Align(
+              alignment: AlignmentDirectional(-0.7, 0),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
+                    child: Text(
+                      'Welcome, Michael',
+                      style: GoogleFonts.oswald(
+                        fontSize: 30,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+        );
   }
 }

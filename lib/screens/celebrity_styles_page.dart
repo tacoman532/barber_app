@@ -17,7 +17,7 @@ class _CelebrityStylesPageState extends State<CelebrityStylesPage> {
         backgroundColor: Colors.white,
         drawer: DrawerWidget(),
       body: Align(
-        alignment: AlignmentDirectional(5, 5),//not working
+        alignment: AlignmentDirectional(5, 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

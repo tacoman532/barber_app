@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../widgets/app_bar_widget.dart';
-import '../widgets/drawer_widget.dart';
 
 class ProfileLogin extends StatefulWidget {
   const ProfileLogin({super.key});
@@ -14,45 +12,52 @@ class _ProfileLoginState extends State<ProfileLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarWidget(
-          title: "Profile",
-        ),
-        drawer: DrawerWidget(),
-        body: Align(
-            alignment: AlignmentDirectional(-0.7, 0),
-            child: ListView(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
+        body: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 200),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ListTile(
-                    title: Text(
-                      'Sign In',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: SizedBox(
+                      width: 150,
+                      child: ElevatedButton(onPressed: (){
+                        Navigator.pushNamed(context, "/log");
+                      }, child: Text(
+                        "Login",
+                      ),
                       ),
                     ),
-                    onTap: () {
-                      setState(() {
-                        Navigator.pushNamed(context, '/log');
-                      });
-                    },
                   ),
-                  ListTile(
-                    title: Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
+                    Text(
+                      "or",
+                      style: GoogleFonts.oswald(
+                        textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
-                    onTap: () {
-                      setState(() {
-                        Navigator.pushNamed(context, '/sign');
-                      });
-                    },
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: SizedBox(
+                      width: 150,
+                      child: ElevatedButton(onPressed: (){
+                        Navigator.pushNamed(context, "/sign");
+                      }, child: Text(
+                        "Sign Up",
+                      ),
+                      ),
+                    ),
                   ),
-                ]
+                ],
+              ),
             )
+          ),
         )
     );
   }

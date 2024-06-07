@@ -1,117 +1,242 @@
-import 'package:barber_app/widgets/app_bar_widget.dart';
-import 'package:barber_app/widgets/drawer_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
 
 import '../widgets/bubble_widget.dart';
 
 class HomePage extends StatefulWidget {
-  final String title;
 
-  const HomePage({super.key, required this.title});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<HomePage> {
+  final text = 'Welcome ';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(
-        title: "Home",
-      ),
-      drawer: DrawerWidget(),
-      body: Column(
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-              child: Text(
-                'Welcome, Michael',
-                style: GoogleFonts.oswald(
-                  fontSize: 30,
+        body: SingleChildScrollView(
+          child: Column(children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                child: Text(
+                  text.length > 16 ? '${(text.substring(0, 16))}...' : text,
+                  style: GoogleFonts.oswald(
+                    fontSize: 30,
+                  ),
                 ),
               ),
             ),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: Container(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-              child: Text(
-                'Trending Styles',
-                style: GoogleFonts.oswald(
-                  fontSize: 25,
+            SizedBox(
+              height: 25.0,
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                child: Text(
+                  'Trending Styles',
+                  style: GoogleFonts.oswald(
+                    fontSize: 25,
+                  ),
                 ),
               ),
             ),
-          ),
-          Row(children: [
-            PageView(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/trend');
-                  },
-                  child: BubbleWidget(
-                    information: 'Additional Information',
-                    color: Colors.red,
-                    height: 171.0,
-                    child: Image.network(
-                      'https://www.fashionbeans.com/wp-content/uploads/2023/08/barberdarron_number1haircutwithskinfade.jpg',
-                      height: 100,
-                    ),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 20),
+              height: 150,
+              width: (MediaQuery.of(context).size.width),
+              alignment: Alignment.centerLeft,
+              child:
+                  PageView(scrollDirection: Axis.horizontal, children: <Widget>[
+                Container(
+                  child: Row(
+                    children: [
+                      BubbleWidget(
+                        child: Image.network(
+                          'https://qph.cf2.quoracdn.net/main-qimg-9aca24ac294d684ced5677d9eea05298',
+                        ),
+                      ),
+                      BubbleWidget(
+                        child: Image.network(
+                          height: 110,
+                          'https://www.gatsbyglobal.com/en/technique/best-haircuts-men-top-mens-hairstyles-today/images/img11.jpg',
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/trend');
-                  },
-                  child: BubbleWidget(
-                    information: 'Additional Information',
-                    color: Colors.red,
-                    height: 171.0,
-                    child: Image.network(
-                      'https://upload.wikimedia.org/wikipedia/commons/e/e8/Chris_Hemsworth_by_Gage_Skidmore_2_%28cropped%29.jpg',
-                      height: 100,
-                    ),
+                Container(
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        child: BubbleWidget(
+                          child: Image.network(
+                            'https://i.pinimg.com/170x/ce/8e/7e/ce8e7e07a92b261dcef587ef7f696d6c.jpg',
+                            height: 100,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/trend');
+                        },
+                      ),
+                      GestureDetector(
+                        child: BubbleWidget(
+                          child: Image.network(
+                            'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
+                            height: 100,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/celeb');
+                        },
+                      ),
+                    ],
+                  ),
+                )
+              ]),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                child: Text(
+                  'Celebrity Styles',
+                  style: GoogleFonts.oswald(
+                    fontSize: 25,
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/trend');
-                  },
-                  child: BubbleWidget(
-                    information: 'Additional Information',
-                    color: Colors.red,
-                    height: 171.0,
-                    child: Image.network(
-                      'https://hips.hearstapps.com/hmg-prod/images/mh-8-24-haircuts-1598305836.png?crop=0.502xw:1.00xh;0,0&resize=640:*',
-                      height: 100,
-                    ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 20),
+              height: 150,
+              width: (MediaQuery.of(context).size.width),
+              alignment: Alignment.centerLeft,
+              child:
+                  PageView(scrollDirection: Axis.horizontal, children: <Widget>[
+                Container(
+                  child: Row(
+                    children: [
+                      BubbleWidget(
+                        child: Image.network(
+                          'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
+                        ),
+                      ),
+                      BubbleWidget(
+                        child: Image.network(
+                          height: 110,
+                          'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/trend');
-                  },
-                  child: BubbleWidget(
-                    information: 'Additional Information',
-                    color: Colors.red,
-                    height: 171.0,
-                    child: Image.network(
-                      'https://hips.hearstapps.com/hmg-prod/images/mh-8-24-haircuts-1598305836.png?crop=0.502xw:1.00xh;0,0&resize=640:*',
-                      height: 100,
-                    ),
+                Container(
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        child: BubbleWidget(
+                          child: Image.network(
+                            'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
+                            height: 100,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/trend');
+                        },
+                      ),
+                      GestureDetector(
+                        child: BubbleWidget(
+                          child: Image.network(
+                            'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
+                            height: 100,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/celeb');
+                        },
+                      ),
+                    ],
+                  ),
+                )
+              ]
+                  ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                child: Text(
+                  'Popular Barbers',
+                  style: GoogleFonts.oswald(
+                    fontSize: 25,
                   ),
                 ),
-              ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 20),
+              height: 150,
+              width: (MediaQuery.of(context).size.width),
+              alignment: Alignment.centerLeft,
+              child:
+              PageView(scrollDirection: Axis.horizontal, children: <Widget>[
+                Container(
+                  child: Row(
+                    children: [
+                      BubbleWidget(
+                        child: Image.network(
+                          'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
+                        ),
+                      ),
+                      BubbleWidget(
+                        child: Image.network(
+                          height: 110,
+                          'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        child: BubbleWidget(
+                          child: Image.network(
+                            'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
+                            height: 100,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/trend');
+                        },
+                      ),
+                      GestureDetector(
+                        child: BubbleWidget(
+                          child: Image.network(
+                            'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
+                            height: 100,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/celeb');
+                        },
+                      ),
+                    ],
+                  ),
+                )
+              ]
+              ),
             ),
           ]),
-        ],
-      ),
-    );
+        ));
   }
 }

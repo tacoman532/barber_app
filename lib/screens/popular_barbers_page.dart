@@ -1,5 +1,3 @@
-import 'package:barber_app/widgets/app_bar_widget.dart';
-import 'package:barber_app/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 
 class PopularBarbersPage extends StatefulWidget {
@@ -13,9 +11,7 @@ class _PopularBarbersPageState extends State<PopularBarbersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarWidget(title: "Popular Barbers",),
         backgroundColor: Colors.white,
-        drawer: DrawerWidget(),
       body: Align(
         alignment: AlignmentDirectional(5, 5),//not working
         child: Column(

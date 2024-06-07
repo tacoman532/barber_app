@@ -1,8 +1,9 @@
 import 'package:barber_app/screens/barber_screen.dart';
 import 'package:barber_app/screens/celebrity_styles_page.dart';
+import 'package:barber_app/screens/drawer_screen.dart';
 import 'package:barber_app/screens/log_in_screen.dart';
 import 'package:barber_app/screens/popular_barbers_page.dart';
-import 'package:barber_app/screens/profile_screen.dart';
+import 'package:barber_app/screens/profile_info_screen.dart';
 import 'package:barber_app/screens/profilelogin_screen.dart';
 import 'package:barber_app/screens/signup_screen.dart';
 import 'package:barber_app/screens/splash_screen.dart';
@@ -34,12 +35,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => SplashPage(),
-        '/home': (context) => HomePage(title: "barber app",),
-        '/trend' : (context) => TrendingPage(),
-        '/celeb' : (context) => CelebrityStylesPage(),
-        '/popular' : (context) => PopularBarbersPage(),
+        '/home': (context) => HomePage(),
+        '/drawer': (context) => DrawerPage(),
         '/barb' : (context) => BarberScreen(name: "bob"),
-        '/pro' : (context) => ProfilePage(),
+        '/pro' : (context) => ProfileInfoPage(),
         '/prolog' : (context) => ProfileLogin(),
         '/log': (context) => LoginPage(),
         '/sign': (context) => SignupScreen(),

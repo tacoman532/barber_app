@@ -1,5 +1,4 @@
 import 'package:barber_app/widgets/app_bar_widget.dart';
-import 'package:barber_app/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 
 class BarberScreen extends StatefulWidget {
@@ -17,7 +16,6 @@ class _BarberScreenState extends State<BarberScreen> {
     return Scaffold(
       appBar: AppBarWidget(title: 'popular barbers',),
       backgroundColor: Colors.white,
-      drawer: DrawerWidget(),
       body: Align(
         alignment: AlignmentDirectional(0, 0),
         child: Column(
@@ -34,7 +32,6 @@ class _BarberScreenState extends State<BarberScreen> {
                 ),
               ),
             ),
-
           ],
         ),
       ),

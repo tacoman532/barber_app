@@ -1,5 +1,3 @@
-import 'package:barber_app/widgets/app_bar_widget.dart';
-import 'package:barber_app/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 
 class CelebrityStylesPage extends StatefulWidget {
@@ -13,9 +11,7 @@ class _CelebrityStylesPageState extends State<CelebrityStylesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarWidget(title: "Celebrity Styles",),
         backgroundColor: Colors.white,
-        drawer: DrawerWidget(),
       body: Align(
         alignment: AlignmentDirectional(5, 5),
         child: Column(

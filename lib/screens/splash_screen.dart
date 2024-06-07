@@ -1,9 +1,6 @@
-import 'package:barber_app/screens/log_in_screen.dart';
-import 'package:barber_app/screens/signup_screen.dart';
+import 'package:barber_app/screens/drawer_screen.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'home_page.dart';
 
 class SplashPage extends StatefulWidget {
   SplashPage({Key? key}) : super(key: key);
@@ -27,7 +24,7 @@ class _SplashPageState extends State<SplashPage> {
       ),
       backgroundColor: Color.fromARGB(0xCC, 12, 12, 12),
       showLoader: true,
-      navigator: SignupScreen(),
+      navigator: DrawerPage(),
       durationInSeconds: 2,
     );
   }

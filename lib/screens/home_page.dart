@@ -126,13 +126,13 @@ class _MyHomePageState extends State<HomePage> {
                     children: [
                       BubbleWidget(
                         child: Image.network(
-                          'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
+                          'https://media.4-paws.org/b/8/d/5/b8d5441fec6b84e9c3cba899549b84bb0f193fff/VIER%20PFOTEN_2019-07-18_013-2890x2000.jpg',
                         ),
                       ),
                       BubbleWidget(
                         child: Image.network(
                           height: 110,
-                          'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
+                          'https://mymodernmet.com/wp/wp-content/uploads/2023/01/how-to-draw-a-duck-fb-thumbnail.jpg',
                         ),
                       ),
                     ],

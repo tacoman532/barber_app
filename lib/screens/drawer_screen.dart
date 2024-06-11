@@ -2,6 +2,7 @@ import 'package:barber_app/screens/celebrity_styles_page.dart';
 import 'package:barber_app/screens/home_page.dart';
 import 'package:barber_app/screens/popular_barbers_page.dart';
 import 'package:barber_app/screens/profile_screen.dart';
+import 'package:barber_app/screens/styles_screen.dart';
 import 'package:barber_app/screens/trending_styles_page.dart';
 import 'package:barber_app/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class _DrawerPageState extends State<DrawerPage> {
     // third page
     CelebrityStylesPage(),
     PopularBarbersPage(),
+    StylesScreen(),
     ProfilePage(),
     // more pages, more ListTiles and more appbars in the method
   ];
@@ -139,7 +141,7 @@ class _DrawerPageState extends State<DrawerPage> {
                 color: Colors.white,
               ),
               title: Text(
-                'Profile',
+                'Personalized Styles',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
@@ -148,6 +150,24 @@ class _DrawerPageState extends State<DrawerPage> {
               selected: _selectedIndex == 4,
               onTap: () {
                 _onItemTapped(4);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
+              title: Text(
+                'Profile',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 24,
+                ),
+              ),
+              selected: _selectedIndex == 5,
+              onTap: () {
+                _onItemTapped(5);
                 Navigator.pop(context);
               },
             ),
@@ -185,6 +205,12 @@ class _DrawerPageState extends State<DrawerPage> {
               title: "Popular Barbers"),
         );
       case 4:
+        return PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: AppBarWidget(
+              title: "Personalized Styles"),
+        );
+      case 5:
         return PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
           child: AppBarWidget(

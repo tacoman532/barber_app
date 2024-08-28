@@ -1,3 +1,4 @@
+import 'package:barber_app/constants/color_constant.dart';
 import 'package:flutter/material.dart';
 
 class CelebrityStylesPage extends StatefulWidget {
@@ -11,7 +12,7 @@ class _CelebrityStylesPageState extends State<CelebrityStylesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: ColorConst.backgroundColor,
       body: Align(
         alignment: AlignmentDirectional(5, 5),
         child: Column(

@@ -7,6 +7,7 @@ import 'package:barber_app/screens/profile_info_screen.dart';
 import 'package:barber_app/screens/profilelogin_screen.dart';
 import 'package:barber_app/screens/signup_screen.dart';
 import 'package:barber_app/screens/splash_screen.dart';
+import 'package:barber_app/screens/styles_screen.dart';
 import 'package:barber_app/screens/trending_styles_page.dart';
 import 'package:flutter/material.dart';
 import 'screens/home_page.dart';

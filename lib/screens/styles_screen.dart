@@ -1,3 +1,4 @@
+import 'package:barber_app/constants/color_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,7 +8,7 @@ class StylesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorConst.backgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

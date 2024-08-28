@@ -1,3 +1,4 @@
+import 'package:barber_app/constants/color_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,6 +13,7 @@ class _ProfileLoginState extends State<ProfileLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorConst.backgroundColor,
         body: SingleChildScrollView(
           child: Container(
             height: MediaQuery.of(context).size.height,
@@ -37,7 +39,7 @@ class _ProfileLoginState extends State<ProfileLogin> {
                       "or",
                       style: GoogleFonts.oswald(
                         textStyle: TextStyle(
-                          color: Colors.black,
+                          color: ColorConst.primaryColor,
                           fontSize: 20,
                         ),
                       ),

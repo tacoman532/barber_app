@@ -1,3 +1,4 @@
+import 'package:barber_app/constants/color_constant.dart';
 import 'package:barber_app/screens/celebrity_styles_page.dart';
 import 'package:barber_app/screens/home_page.dart';
 import 'package:barber_app/screens/popular_barbers_page.dart';
@@ -5,6 +6,7 @@ import 'package:barber_app/screens/profile_screen.dart';
 import 'package:barber_app/screens/styles_screen.dart';
 import 'package:barber_app/screens/trending_styles_page.dart';
 import 'package:barber_app/widgets/app_bar_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -45,19 +47,20 @@ class _DrawerPageState extends State<DrawerPage> {
         child: _widgetOptions[_selectedIndex],
       ),
       drawer: Drawer(
-        backgroundColor: Color.fromARGB(0xFF, 72, 30, 20),
+        surfaceTintColor: ColorConst.primaryColor,
+        backgroundColor: ColorConst.containerColor,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: ColorConst.backgroundColor,
               ),
               child: Text(
                 'Barber App',
                 style: GoogleFonts.oswald(
                   textStyle: TextStyle(
-                    color: Colors.black,
+                    color: ColorConst.primaryColor,
                     fontSize: 50,
                   ),
                 ),
@@ -66,12 +69,12 @@ class _DrawerPageState extends State<DrawerPage> {
             ListTile(
               leading: Icon(
                 Icons.home,
-                color: Colors.white,
+                color: ColorConst.primaryColor,
               ),
               title: Text(
                 'Home',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: ColorConst.primaryColor,
                   fontSize: 24,
                 ),
               ),
@@ -84,12 +87,12 @@ class _DrawerPageState extends State<DrawerPage> {
             ListTile(
               leading: Icon(
                 Icons.style,
-                color: Colors.white,
+                color: ColorConst.primaryColor,
               ),
               title: Text(
                 'Trending Styles',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: ColorConst.primaryColor,
                   fontSize: 24,
                 ),
               ),
@@ -102,12 +105,12 @@ class _DrawerPageState extends State<DrawerPage> {
             ListTile(
               leading: Icon(
                 Icons.celebration,
-                color: Colors.white,
+                color: ColorConst.primaryColor,
               ),
               title: Text(
                 'Celebrity Styles',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: ColorConst.primaryColor,
                   fontSize: 24,
                 ),
               ),
@@ -120,12 +123,12 @@ class _DrawerPageState extends State<DrawerPage> {
             ListTile(
               leading: Icon(
                 Icons.cut,
-                color: Colors.white,
+                color: ColorConst.primaryColor,
               ),
               title: Text(
                 'Popular Barbers',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: ColorConst.primaryColor,
                   fontSize: 24,
                 ),
               ),
@@ -137,13 +140,13 @@ class _DrawerPageState extends State<DrawerPage> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person,
-                color: Colors.white,
+                CupertinoIcons.person_2_fill,
+                color: ColorConst.primaryColor,
               ),
               title: Text(
                 'Personalized Styles',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: ColorConst.primaryColor,
                   fontSize: 24,
                 ),
               ),
@@ -156,12 +159,12 @@ class _DrawerPageState extends State<DrawerPage> {
             ListTile(
               leading: Icon(
                 Icons.person,
-                color: Colors.white,
+                color: ColorConst.primaryColor,
               ),
               title: Text(
                 'Profile',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: ColorConst.primaryColor,
                   fontSize: 24,
                 ),
               ),

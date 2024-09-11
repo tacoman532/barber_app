@@ -1,4 +1,5 @@
 import 'package:barber_app/constants/color_constant.dart';
+import 'package:barber_app/screens/barber_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -58,25 +59,38 @@ class _PopularBarbersPageState extends State<PopularBarbersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConst.backgroundColor,
-      body: Column(
-        children: [
-          SizedBox(height: 10,),
-          SearchBar(
-            controller: _searchBarController,
-            onSubmitted: (dynamic) async {
-              await _searchBarbershops();
-            },
-          ),
-          SizedBox(height: 10,),
-          _loading
-              ? CircularProgressIndicator()
-              : Expanded(
-                  child: ListView.builder(
+      body: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            SearchBar(
+              controller: _searchBarController,
+              onSubmitted: (dynamic) async {
+                await _searchBarbershops();
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            _loading
+                ? Padding(
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height / 3),
+                    child: CircularProgressIndicator(
+                      color: ColorConst.primaryColor,
+                    ),
+                  )
+                : Expanded(
+                    child: ListView.builder(
                       itemCount: _barbershops.length,
                       itemBuilder: (context, index) {
                         final barbershop = _barbershops[index];
                         return Card(
-                          margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                          margin:
+                              EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                           elevation: 4,
                           child: ListTile(
                             title: Text(
@@ -93,17 +107,36 @@ class _PopularBarbersPageState extends State<PopularBarbersPage> {
                                 fontSize: 14,
                               ),
                             ),
-                            trailing: Icon(Icons.arrow_forward, color: Colors.grey),
-                            contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                            trailing:
+                                Icon(Icons.arrow_forward, color: Colors.grey),
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 20),
                             tileColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => BarberScreen(
+                                    name: barbershop['name'],
+                                    location: barbershop['location'],
+                                    url: barbershop['url'],
+                                    reviews: barbershop['reviews'],
+                                    contactHours: barbershop['contact_hours'],
+                                    services: barbershop['services'],
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                         );
-                      }),
-                )
-        ],
+                      },
+                    ),
+                  )
+          ],
+        ),
       ),
     );
   }

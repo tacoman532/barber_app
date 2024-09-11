@@ -14,6 +14,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<HomePage> {
+  // final VoidCallback onLearnPageNavigation;
+  // const HomePage({super.key, required this.onLearnPageNavigation});
   final text = 'Welcome ';
 
   @override
@@ -175,7 +177,7 @@ class _MyHomePageState extends State<HomePage> {
             SizedBox(height:40),
             ElevatedButton.icon(
               onPressed: () {
-                Navigator.pushNamed(context, '/style');
+                // onLearnPageNavigation();
               },
               icon: Icon(Icons.arrow_forward, color: ColorConst.primaryColor),
               label: Text(

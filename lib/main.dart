@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
         '/': (context) => SplashPage(),
         '/home': (context) => HomePage(),
         '/drawer': (context) => DrawerPage(),
-        '/barb' : (context) => BarberScreen(name: "bob"),
         '/pro' : (context) => ProfileInfoPage(),
         '/prolog' : (context) => ProfileLogin(),
         '/log': (context) => LoginPage(),

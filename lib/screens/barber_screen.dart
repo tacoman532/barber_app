@@ -82,31 +82,43 @@ class _BarberScreenState extends State<BarberScreen> {
                   ),
                 ),
               ),
-              ListView.builder(
-                  itemCount: (servicesList.length + 1) ~/ 2,
-                  itemBuilder: (context, index) {
-                    //final barbershop = servicesList[index];
-                    final title = servicesList[index * 2];
-                    final hours = index * 2 + 1 < servicesList.length ? servicesList[index * 2 + 1] : null;
-                    return Card(
-                      child: ListTile(
-                        title: Text(
-                          title,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                        ),
-                        subtitle: Text(
-                          hours!,
-                          style: TextStyle(
-                            color: Colors.grey[600],
-                            fontSize: 14,
-                          ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Services:',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    ...servicesList.map(
+                          (service) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5.0),
+                        child: Row(
+                          children: [
+                            SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                service,
+                                style: TextStyle(
+                                  color: Colors.grey[1000],
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    );
-                  }),
+                    ).toList(),
+                  ],
+                ),
+              ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 24.0),
                 child: Text(

@@ -59,53 +59,49 @@ class _MyHomePageState extends State<HomePage> {
               width: (MediaQuery.of(context).size.width),
               alignment: Alignment.centerLeft,
               child:
-                  PageView(scrollDirection: Axis.horizontal, children: <Widget>[
-                Container(
-                  child: Row(
-                    children: [
-                      BubbleWidget(
-                        child: Image.network(
-                          'https://qph.cf2.quoracdn.net/main-qimg-9aca24ac294d684ced5677d9eea05298',
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        BubbleWidget(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                          child: Image.network(
+                            'https://qph.cf2.quoracdn.net/main-qimg-9aca24ac294d684ced5677d9eea05298',
+                            fit: BoxFit.cover,
+                          ),
+                          ),
                         ),
-                      ),
-                      BubbleWidget(
-                        child: Image.network(
-                          height: 110,
-                          'https://www.gatsbyglobal.com/en/technique/best-haircuts-men-top-mens-hairstyles-today/images/img11.jpg',
+                        BubbleWidget(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                          child: Image.network(
+                            'https://www.gatsbyglobal.com/en/technique/best-haircuts-men-top-mens-hairstyles-today/images/img11.jpg',
+                            fit: BoxFit.cover,
+                          ),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        child: BubbleWidget(
+                        BubbleWidget(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
                           child: Image.network(
                             'https://i.pinimg.com/170x/ce/8e/7e/ce8e7e07a92b261dcef587ef7f696d6c.jpg',
-                            height: 100,
+                            fit: BoxFit.cover,
+                          ),
                           ),
                         ),
-                        onTap: () {
-                          Navigator.pushNamed(context, '/trend');
-                        },
-                      ),
-                      GestureDetector(
-                        child: BubbleWidget(
+                        BubbleWidget(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
                           child: Image.network(
                             'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
-                            height: 100,
+                            fit: BoxFit.cover,
+                          ),
                           ),
                         ),
-                        onTap: () {
-                          Navigator.pushNamed(context, '/celeb');
-                        },
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                )
-              ]),
             ),
             Align(
               alignment: Alignment.center,
@@ -126,53 +122,39 @@ class _MyHomePageState extends State<HomePage> {
               width: (MediaQuery.of(context).size.width),
               alignment: Alignment.centerLeft,
               child:
-                  PageView(scrollDirection: Axis.horizontal, children: <Widget>[
-                Container(
-                  child: Row(
-                    children: [
-                      BubbleWidget(
-                        child: Image.network(
-                          'https://media.4-paws.org/b/8/d/5/b8d5441fec6b84e9c3cba899549b84bb0f193fff/VIER%20PFOTEN_2019-07-18_013-2890x2000.jpg',
-                        ),
-                      ),
-                      BubbleWidget(
-                        child: Image.network(
-                          height: 110,
-                          'https://mymodernmet.com/wp/wp-content/uploads/2023/01/how-to-draw-a-duck-fb-thumbnail.jpg',
-                        ),
-                      ),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                BubbleWidget(
+                child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                  child: Image.network(
+                    'https://media.4-paws.org/b/8/d/5/b8d5441fec6b84e9c3cba899549b84bb0f193fff/VIER%20PFOTEN_2019-07-18_013-2890x2000.jpg',
+                    fit: BoxFit.cover,
                   ),
                 ),
-                Container(
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        child: BubbleWidget(
-                          child: Image.network(
-                            'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
-                            height: 100,
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.pushNamed(context, '/trend');
-                        },
-                      ),
-                      GestureDetector(
-                        child: BubbleWidget(
-                          child: Image.network(
-                            'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
-                            height: 100,
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.pushNamed(context, '/celeb');
-                        },
-                      ),
-                    ],
+                ),
+                BubbleWidget(
+                  child: Image.network(
+                    height: 110,
+                    'https://mymodernmet.com/wp/wp-content/uploads/2023/01/how-to-draw-a-duck-fb-thumbnail.jpg',
                   ),
-                )
-              ]),
+                ),
+                BubbleWidget(
+                  child: Image.network(
+                    'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
+                    height: 100,
+                  ),
+                ),
+                BubbleWidget(
+                  child: Image.network(
+                    'https://assets.pokemon.com/assets/cms2/img/pokedex/full//149.png',
+                    height: 100,
+                  ),
+                ),
+                ]),
+                  ),
             ),
             SizedBox(height:40),
             ElevatedButton.icon(

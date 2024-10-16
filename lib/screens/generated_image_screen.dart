@@ -9,7 +9,8 @@ class ImageGenerationScreen extends StatefulWidget {
   final String hairLengthBack;
   final String hairTexture;
 
-  const ImageGenerationScreen({super.key, required this.hairLine, required this.hairLengthTop, required this.hairLengthSide, required this.hairLengthBack, required this.hairTexture});
+  const ImageGenerationScreen(
+      {super.key, required this.hairLine, required this.hairLengthTop, required this.hairLengthSide, required this.hairLengthBack, required this.hairTexture});
 
   @override
   State<ImageGenerationScreen> createState() => _ImageGenerationScreenState();
@@ -18,7 +19,7 @@ class ImageGenerationScreen extends StatefulWidget {
 class _ImageGenerationScreenState extends State<ImageGenerationScreen> {
   bool isGenerating = true;
   late OpenAI openAI;
-  String url = '';
+  List<String> urls = [];
 
   @override
   void initState() {
@@ -33,24 +34,36 @@ class _ImageGenerationScreenState extends State<ImageGenerationScreen> {
   }
 
   Future<void> _generateImage() async {
-    const prompt = "cat eating snake blue red.";
+    final prompt =
+    ''' 
+          Generate three images of a male with the following characteristics:
+          Hair Texture: ${widget.hairTexture}
+          Hair Length: ${widget.hairLengthTop}
+          Hairline: ${widget.hairLine}
+          The person's head should be shown from the left side, the right side, and the front to 
+          display the unique hair features. The person should have a neutral expression, 
+          with soft lighting to emphasize the hair texture. The background should be a simple, 
+          soft color to ensure the focus remains on the person’s head.
+          Once the image is generated split the image into three separate images and then return them.
+        ''';
 
     final request = GenerateImage(
-        model: DallE2(),
+        model: DallE3(),
         prompt,
         1,
-        size: ImageSize.size256,
-        responseFormat: Format.url);try {
+        size: ImageSize.size1024,
+        responseFormat: Format.url);
+    try {
       final response = await openAI.generateImage(request);
 
       setState(() {
         isGenerating = false;
-        url = response?.data?.last?.url ?? '';
+        urls = response?.data?.map((data) => data?.url ?? '').toList() ?? [];
       });
     } catch (e) {
       setState(() {
         isGenerating = false;
-        url = 'Error generating image: $e';
+        urls = ['Error generating images: $e'];
       });
     }
   }
@@ -58,16 +71,21 @@ class _ImageGenerationScreenState extends State<ImageGenerationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-          if (isGenerating)
-            const CircularProgressIndicator()
-          else if (url.isNotEmpty)
-            Image.network(url)
-          else
-            const Text("Failed to generate image."),
-        ],
+      appBar: AppBar(title: const Text('Generated Images')),
+      body: Center(
+        child: isGenerating
+            ? const CircularProgressIndicator()
+            : urls.isNotEmpty && urls[0].startsWith('http')
+            ? ListView.builder(
+          itemCount: urls.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.network(urls[index]),
+            );
+          },
+        )
+            : const Text("Failed to generate images."),
       ),
     );
   }

@@ -30,6 +30,7 @@ class _ProfileLoginState extends State<ProfileLogin> {
                       child: ElevatedButton(onPressed: (){
                         Navigator.pushNamed(context, "/log");
                       }, child: Text(
+                        style: GoogleFonts.oswald(),
                         "Login",
                       ),
                       ),
@@ -51,6 +52,7 @@ class _ProfileLoginState extends State<ProfileLogin> {
                       child: ElevatedButton(onPressed: (){
                         Navigator.pushNamed(context, "/sign");
                       }, child: Text(
+                        style: GoogleFonts.oswald(),
                         "Sign Up",
                       ),
                       ),

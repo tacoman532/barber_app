@@ -1,3 +1,5 @@
+import 'package:barber_app/constants/color_constant.dart';
+import 'package:barber_app/widgets/app_bar_widget.dart';
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -38,13 +40,18 @@ class _ImageGenerationScreenState extends State<ImageGenerationScreen> {
     ''' 
           Generate three images of a male with the following characteristics:
           Hair Texture: ${widget.hairTexture}
-          Hair Length: ${widget.hairLengthTop}
+          Hair Length on top: ${widget.hairLengthTop}
+          Hair Length on side: ${widget.hairLengthSide}
+          Hair Length on back: ${widget.hairLengthBack}
           Hairline: ${widget.hairLine}
-          The person's head should be shown from the left side, the right side, and the front to 
-          display the unique hair features. The person should have a neutral expression, 
-          with soft lighting to emphasize the hair texture. The background should be a simple, 
+          blur the person's face. 
+          have soft lighting to emphasize the hair texture. The background should be a simple, 
           soft color to ensure the focus remains on the person’s head.
-          Once the image is generated split the image into three separate images and then return them.
+          Once the image is generated split the image into four separate images
+          frame 1 should have: the left side angle
+          frame 2 should have: the right side angle
+          frame 3 should have: the front side angle
+          frame 4 should have: the back side angle
         ''';
 
     final request = GenerateImage(
@@ -71,18 +78,18 @@ class _ImageGenerationScreenState extends State<ImageGenerationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Generated Images')),
+      backgroundColor: ColorConst.backgroundColor,
+      appBar: AppBarWidget(title: 'Generated Images'),
       body: Center(
         child: isGenerating
-            ? const CircularProgressIndicator()
+            ? const CircularProgressIndicator(
+          color: ColorConst.primaryColor,
+        )
             : urls.isNotEmpty && urls[0].startsWith('http')
             ? ListView.builder(
           itemCount: urls.length,
           itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.network(urls[index]),
-            );
+            return Image.network(urls[index], width: MediaQuery.of(context).size.width - 20,);
           },
         )
             : const Text("Failed to generate images."),

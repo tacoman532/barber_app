@@ -18,20 +18,6 @@ class _SignupScreenState extends State<SignupScreen> {
   final _passwordController = TextEditingController();
   final _usernameController = TextEditingController();
 
-  Future<bool> createNewUser(String email, String password) async {
-    try {
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return true;
-    } catch (e) {
-      print(e);
-      return false;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -160,6 +146,8 @@ class _SignupScreenState extends State<SignupScreen> {
                           )
                               .then((_) {
                             print('Successfully created user');
+                            final user = FirebaseAuth.instance.currentUser;
+                            user?.updateDisplayName(_usernameController.text);
                             Navigator.pop(context);
                             Navigator.pushNamed(context, '/drawer');
                           });

@@ -28,7 +28,7 @@ class _PopularBarbersPageState extends State<PopularBarbersPage> {
     final String city = parts[0].trim();
     final String zipcode = parts[1].trim();
     final String url =
-        'http://192.168.68.130:5000/get_barbershops/$city/$zipcode';
+        'http://184.72.20.54:5000/get_barbershops/$city/$zipcode';
 
     print('Request URL: $url');
 
@@ -67,6 +67,8 @@ class _PopularBarbersPageState extends State<PopularBarbersPage> {
               height: 10,
             ),
             SearchBar(
+              hintText: 'city, ZIP code',
+              leading: Icon(Icons.search, color: ColorConst.backgroundColor),
               controller: _searchBarController,
               onSubmitted: (dynamic) async {
                 await _searchBarbershops();

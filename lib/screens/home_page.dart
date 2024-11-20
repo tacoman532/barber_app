@@ -170,7 +170,7 @@ class _MyHomePageState extends State<HomePage> {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: ColorConst.extraColor,
+                backgroundColor: ColorConst.containerColor,
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
               ),
             ),

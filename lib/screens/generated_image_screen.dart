@@ -44,14 +44,13 @@ class _ImageGenerationScreenState extends State<ImageGenerationScreen> {
           Hair Length on side: ${widget.hairLengthSide}
           Hair Length on back: ${widget.hairLengthBack}
           Hairline: ${widget.hairLine}
-          blur the person's face. 
-          have soft lighting to emphasize the hair texture. The background should be a simple, 
+          have soft lighting to emphasize the hair. The background should be a simple 
           soft color to ensure the focus remains on the person’s head.
-          Once the image is generated split the image into four separate images
-          frame 1 should have: the left side angle
-          frame 2 should have: the right side angle
-          frame 3 should have: the front side angle
-          frame 4 should have: the back side angle
+          create four separate images
+          should have: the left side angle
+          should have: the right side angle
+          should have: the front side angle
+          should have: the back side angle
         ''';
 
     final request = GenerateImage(

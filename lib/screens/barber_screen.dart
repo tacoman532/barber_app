@@ -3,6 +3,7 @@ import 'package:barber_app/widgets/app_bar_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BarberScreen extends StatefulWidget {
   final String name;
@@ -61,12 +62,37 @@ class _BarberScreenState extends State<BarberScreen> {
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 24.0),
-                child: Text(
-                  widget.location,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width - 32,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          widget.location,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      IconButton(
+                          onPressed: () async {
+                            final Uri _url = Uri.parse(widget.url);
+                            if (!await launchUrl(_url)) {
+                              throw Exception('Could not launch $_url');
+                            }
+                          },
+                          icon: Icon(
+                            CupertinoIcons.link,
+                            size: 25,
+                            color: Colors.black,
+                          ))
+                    ],
                   ),
                 ),
               ),
@@ -96,26 +122,28 @@ class _BarberScreenState extends State<BarberScreen> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    ...servicesList.map(
+                    ...servicesList
+                        .map(
                           (service) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5.0),
-                        child: Row(
-                          children: [
-                            SizedBox(width: 10),
-                            Expanded(
-                              child: Text(
-                                service,
-                                style: TextStyle(
-                                  color: Colors.grey[1000],
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400,
+                            padding: const EdgeInsets.symmetric(vertical: 5.0),
+                            child: Row(
+                              children: [
+                                SizedBox(width: 10),
+                                Expanded(
+                                  child: Text(
+                                    service,
+                                    style: TextStyle(
+                                      color: Colors.grey[1000],
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
-                    ).toList(),
+                          ),
+                        )
+                        .toList(),
                   ],
                 ),
               ),

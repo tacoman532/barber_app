@@ -52,6 +52,7 @@ class _StylesScreenState extends State<StylesScreen> {
                           width: (MediaQuery.of(context).size.width / 2) - 2,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(left: 8.0),
@@ -446,6 +447,7 @@ class _StylesScreenState extends State<StylesScreen> {
                           width: (MediaQuery.of(context).size.width / 2) - 2,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(left: 8.0),

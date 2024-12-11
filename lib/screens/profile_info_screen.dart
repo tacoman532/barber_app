@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:barber_app/constants/color_constant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -12,40 +11,32 @@ class ProfileInfoPage extends StatefulWidget {
 
 class _ProfileInfoPageState extends State<ProfileInfoPage> {
   final user = FirebaseAuth.instance.currentUser;
-  List<Color> colors = [
-    ColorConst.containerColor,
-    Color.fromARGB(255, 111, 43, 31)
-  ];
+  List<Color> colors = [Colors.purple, Colors.blue];
   bool toggle = true;
 
   void initState() {
     super.initState();
-    Timer.periodic(Duration(seconds: 1), (timer) {
+    // Timer to periodically change the gradient
+    Timer.periodic(Duration(seconds: 2), (timer) {
       setState(() {
-        colors = toggle
-            ? [
-          Color.fromARGB(255, 111, 43, 31),
-          ColorConst.containerColor,
-              ]
-            : [ColorConst.containerColor, Color.fromARGB(255, 111, 43, 31)];
+        // Toggle between two color schemes for the gradient
+        colors = toggle ? [Colors.blue, Colors.green] : [Colors.purple, Colors.blue];
         toggle = !toggle;
       });
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          Container(
-            height: 120,
+          AnimatedContainer(
+            duration: Duration(seconds: 2),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: colors,
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                //stops: [0.2, 0.4, 0.6, 0.8],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
             ),
             child: Column(
@@ -53,7 +44,7 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: 10,
+                  height: 50,
                 ),
                 Text(
                   user?.displayName as String,
@@ -131,7 +122,16 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                           print("Error signing out: $e");
                         }
                       },
-                      child: Text("Log Out"),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(0xFF, 72, 30, 20),
+                      ),
+                      child: Text(
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                        ),
+                        "Log Out",
+                      ),
                     ),
                     SizedBox(
                       width: 20.0,
@@ -141,8 +141,7 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
                           title: const Text('Delete Account'),
-                          content: const Text(
-                              'Are You Sure You Want to Delete Account?'),
+                          content: const Text('Are You Sure You Want to Delete Account?'),
                           actions: <Widget>[
                             TextButton(
                               onPressed: () => Navigator.pop(context, 'Cancel'),
@@ -151,8 +150,7 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                             TextButton(
                               onPressed: () async {
                                 try {
-                                  await FirebaseAuth.instance.currentUser!
-                                      .delete();
+                                  await FirebaseAuth.instance.currentUser!.delete();
                                   Navigator.pop(context);
                                 } on FirebaseAuthException catch (e) {
                                   if (e.code == 'requires-recent-login') {
@@ -166,7 +164,16 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                           ],
                         ),
                       ),
-                      child: Text("Delete Account"),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(0xFF, 72, 30, 20),
+                      ),
+                      child: Text(
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                        ),
+                          "Delete Account",
+                      ),
                     ),
                   ],
                 )

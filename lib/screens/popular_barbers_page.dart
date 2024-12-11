@@ -66,13 +66,20 @@ class _PopularBarbersPageState extends State<PopularBarbersPage> {
             SizedBox(
               height: 10,
             ),
-            SearchBar(
-              hintText: 'city, ZIP code',
-              leading: Icon(Icons.search, color: ColorConst.backgroundColor),
-              controller: _searchBarController,
-              onSubmitted: (dynamic) async {
-                await _searchBarbershops();
-              },
+            Theme(
+              data: ThemeData(
+                textSelectionTheme: TextSelectionThemeData(
+                  cursorColor: Colors.black,
+                ),
+              ),
+              child: SearchBar(
+                hintText: 'city, ZIP code',
+                leading: Icon(Icons.search, color: ColorConst.backgroundColor),
+                controller: _searchBarController,
+                onSubmitted: (dynamic) async {
+                  await _searchBarbershops();
+                },
+              ),
             ),
             SizedBox(
               height: 10,

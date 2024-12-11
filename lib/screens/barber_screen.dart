@@ -149,25 +149,29 @@ class _BarberScreenState extends State<BarberScreen> {
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 24.0),
-                child: Text(
-                  widget.url,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Reviews:',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      widget.reviews,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 24.0),
-                child: Text(
-                  widget.reviews,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+
               ),
             ],
           ),

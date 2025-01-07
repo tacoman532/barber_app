@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/color_constant.dart';
+
 class ProfileInfoPage extends StatefulWidget {
   const ProfileInfoPage({super.key});
 
@@ -11,7 +13,10 @@ class ProfileInfoPage extends StatefulWidget {
 
 class _ProfileInfoPageState extends State<ProfileInfoPage> {
   final user = FirebaseAuth.instance.currentUser;
-  List<Color> colors = [Colors.purple, Colors.blue];
+  List<Color> colors = [
+    Color.fromARGB(175, 72, 30, 20),
+    Color.fromARGB(255, 72, 30, 20)
+  ];
   bool toggle = true;
 
   void initState() {
@@ -20,14 +25,21 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
     Timer.periodic(Duration(seconds: 2), (timer) {
       setState(() {
         // Toggle between two color schemes for the gradient
-        colors = toggle ? [Colors.blue, Colors.green] : [Colors.purple, Colors.blue];
+        colors = toggle
+            ? [Color.fromARGB(255, 72, 30, 20), Color.fromARGB(100, 72, 30, 20)]
+            : [
+                Color.fromARGB(175, 72, 30, 20),
+                Color.fromARGB(255, 72, 30, 20)
+              ];
         toggle = !toggle;
       });
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorConst.backgroundColor,
       body: ListView(
         children: <Widget>[
           AnimatedContainer(
@@ -44,7 +56,7 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
                 Text(
                   user?.displayName as String,
@@ -61,16 +73,38 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
             child: Column(
               children: <Widget>[
                 ListTile(
-                  title: Text(
-                    'Email',
-                    style: TextStyle(
-                      color: Colors.deepOrange,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  leading: Icon(
+                    Icons.email,
+                    color: Colors.deepOrange,
+                  ),
+                  title: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Email',
+                          style: TextStyle(
+                            color: Colors.deepOrange,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.deepOrange,
+                          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          textStyle: TextStyle(fontSize: 10),
+                        ),
+                        child: Text(
+                          'Change Email',
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        ),
+                      ),
+                    ],
                   ),
                   subtitle: Text(
-                    user?.email as String,
+                    user?.email ?? 'No Email',
                     style: TextStyle(
                       fontSize: 18,
                     ),
@@ -78,13 +112,35 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text(
-                    'Phone Number',
-                    style: TextStyle(
-                      color: Colors.deepOrange,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  leading: Icon(
+                    Icons.phone,
+                    color: Colors.deepOrange,
+                  ),
+                  title: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Phone Number',
+                          style: TextStyle(
+                            color: Colors.deepOrange,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.deepOrange,
+                          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          textStyle: TextStyle(fontSize: 10),
+                        ),
+                        child: Text(
+                          'Change Phone Number',
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        ),
+                      ),
+                    ],
                   ),
                   subtitle: Text(
                     '571-345-2143',
@@ -95,13 +151,35 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text(
-                    'Username',
-                    style: TextStyle(
-                      color: Colors.deepOrange,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  leading: Icon(
+                    Icons.person,
+                    color: Colors.deepOrange,
+                  ),
+                  title: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Username',
+                          style: TextStyle(
+                            color: Colors.deepOrange,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.deepOrange,
+                          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          textStyle: TextStyle(fontSize: 10),
+                        ),
+                        child: Text(
+                          'Change Username',
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        ),
+                      ),
+                    ],
                   ),
                   subtitle: Text(
                     'tacoman532',
@@ -141,7 +219,8 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
                           title: const Text('Delete Account'),
-                          content: const Text('Are You Sure You Want to Delete Account?'),
+                          content: const Text(
+                              'Are You Sure You Want to Delete Account?'),
                           actions: <Widget>[
                             TextButton(
                               onPressed: () => Navigator.pop(context, 'Cancel'),
@@ -150,7 +229,8 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                             TextButton(
                               onPressed: () async {
                                 try {
-                                  await FirebaseAuth.instance.currentUser!.delete();
+                                  await FirebaseAuth.instance.currentUser!
+                                      .delete();
                                   Navigator.pop(context);
                                 } on FirebaseAuthException catch (e) {
                                   if (e.code == 'requires-recent-login') {
@@ -172,7 +252,7 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                           fontSize: 12,
                           color: Colors.white,
                         ),
-                          "Delete Account",
+                        "Delete Account",
                       ),
                     ),
                   ],

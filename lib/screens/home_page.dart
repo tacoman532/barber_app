@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:barber_app/constants/color_constant.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
@@ -17,12 +18,13 @@ class HomePage extends StatefulWidget {
 class _MyHomePageState extends State<HomePage> {
   // final VoidCallback onLearnPageNavigation;
   // const HomePage({super.key, required this.onLearnPageNavigation});
-  final text = 'Welcome ';
+  late final text;
+  final user = FirebaseAuth.instance.currentUser;
 
   Future<List<String>> fetchCelebrities() async {
     const String apiKey =
         "e6a90dacc9a2c982765a75f515975a9dac2c2a604c00de82d5ac0256c2725bdd";
-    const String query = "headshot men celebrity hairstyle";
+    const String query = "men celebrity hairstyle";
     const String location = "San Francisco, CA, California, United States";
 
     final Uri url = Uri.parse(
@@ -83,6 +85,9 @@ class _MyHomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    text = "Welcome ${user?.displayName}";
+
     return Scaffold(
       backgroundColor: ColorConst.backgroundColor,
       body: SingleChildScrollView(

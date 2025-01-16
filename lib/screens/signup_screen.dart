@@ -158,7 +158,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(7)),
+                          borderRadius: BorderRadius.circular(20)),
                       backgroundColor: Color.fromARGB(0xFF, 72, 30, 20),
                     ),
                     child: Text(

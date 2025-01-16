@@ -217,7 +217,7 @@ class _DrawerPageState extends State<DrawerPage> {
         return PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
           child: AppBarWidget(
-              title: "Profile"),
+              title: ""),
         );
       default:
         return PreferredSize(

@@ -2,6 +2,8 @@ import 'package:barber_app/screens/drawer_screen.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/color_constant.dart';
+
 class SplashPage extends StatefulWidget {
   SplashPage({Key? key}) : super(key: key);
 
@@ -13,19 +15,13 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return EasySplashScreen(
-      logo: Image.network(
-          'https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/flutter-512.png'),
-      title: const Text(
-        "Barber App",
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      backgroundColor: Color.fromARGB(0xCC, 12, 12, 12),
+      logo: Image(image: AssetImage("assets/realLogo.png")),
+      logoWidth: 120,
+      loaderColor: Colors.white,
+      backgroundColor: ColorConst.backgroundColor,
       showLoader: true,
       navigator: DrawerPage(),
-      durationInSeconds: 2,
+      durationInSeconds: 20,
     );
   }
 }

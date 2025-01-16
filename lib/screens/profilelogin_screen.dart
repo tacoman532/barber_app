@@ -32,6 +32,8 @@ class _ProfileLoginState extends State<ProfileLogin> {
                             Navigator.pushNamed(context, "/log");
                           },
                           style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
                             backgroundColor: Color.fromARGB(0xFF, 72, 30, 20),
                           ),
                           child: Text(
@@ -62,6 +64,8 @@ class _ProfileLoginState extends State<ProfileLogin> {
                             Navigator.pushNamed(context, "/sign");
                           },
                           style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
                             backgroundColor: Color.fromARGB(0xFF, 72, 30, 20),
                           ),
                           child: Text(

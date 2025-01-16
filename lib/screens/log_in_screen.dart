@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: submit,
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7)),
+                      borderRadius: BorderRadius.circular(20)),
                   backgroundColor: Color.fromARGB(0xFF, 72, 30, 20),
                 ),
                 child: Text('Login',
@@ -147,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                     shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(7)),
+                                        borderRadius: BorderRadius.circular(20)),
                                     backgroundColor: Color.fromARGB(0xFF, 72, 30, 20),
                                   ),
                                   child: Text('send',

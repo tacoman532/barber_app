@@ -23,7 +23,7 @@ class _MyHomePageState extends State<HomePage> {
 
   Future<List<String>> fetchCelebrities() async {
     const String apiKey =
-        "e6a90dacc9a2c982765a75f515975a9dac2c2a604c00de82d5ac0256c2725bdd";
+        "1b179a642c933a570453a3b12ee812184c1398fa8ad454df3e8478551056be43";
     const String query = "men celebrity hairstyle";
     const String location = "San Francisco, CA, California, United States";
 
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<HomePage> {
       return [];
     }
   }
-
+  //1b179a642c933a570453a3b12ee812184c1398fa8ad454df3e8478551056be43
   Future<List<String>> fetchTrending() async {
     const String apiKey =
         "1b179a642c933a570453a3b12ee812184c1398fa8ad454df3e8478551056be43";
@@ -86,7 +86,7 @@ class _MyHomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    text = "Welcome ${user?.displayName}";
+    text = "Welcome ${user?.displayName == null ? "" : user?.displayName}";
 
     return Scaffold(
       backgroundColor: ColorConst.backgroundColor,

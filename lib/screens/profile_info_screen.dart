@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../constants/color_constant.dart';
 
@@ -13,6 +14,13 @@ class ProfileInfoPage extends StatefulWidget {
 
 class _ProfileInfoPageState extends State<ProfileInfoPage> {
   final user = FirebaseAuth.instance.currentUser;
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _usernameController = TextEditingController();
+
+
+
   List<Color> colors = [
     Color.fromARGB(175, 72, 30, 20),
     Color.fromARGB(255, 72, 30, 20)
@@ -66,6 +74,7 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                     color: Colors.white,
                   ),
                 ),
+                SizedBox(height: 20,),
               ],
             ),
           ),
@@ -90,10 +99,76 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: Text(
+                              'Change Email',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.oswald(),
+                            ),
+                            content: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.width / 3,
+                              child: Column(
+                                children: [
+                                  TextFormField(
+                                    controller: _emailController,
+                                    cursorColor: Colors.black,
+                                    decoration: InputDecoration(
+                                        label: Text("Email"),
+                                        focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                          color: Colors.black,
+                                        ))),
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                  TextFormField(
+                                    controller: _passwordController,
+                                    cursorColor: Colors.black,
+                                    decoration: InputDecoration(
+                                        label: Text("Current Password"),
+                                        focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                          color: Colors.black,
+                                        ))),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            actions: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      user?.updateEmail(_emailController.text);
+                                      Navigator.pop(context);
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      backgroundColor:
+                                          Color.fromARGB(0xFF, 72, 30, 20),
+                                    ),
+                                    child: Text('Update',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.deepOrange,
-                          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           textStyle: TextStyle(fontSize: 10),
                         ),
                         child: Text(
@@ -129,10 +204,66 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: Text(
+                              'Change Phone Number',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.oswald(),
+                            ),
+                            content: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.width / 4,
+                              child: Column(
+                                children: [
+                                  TextFormField(
+                                    controller: _emailController,
+                                    cursorColor: Colors.black,
+                                    decoration: InputDecoration(
+                                        label: Text("Phone Number"),
+                                        focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.black,
+                                            ))),
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            actions: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {
+
+                                      Navigator.pop(context);
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(20)),
+                                      backgroundColor:
+                                      Color.fromARGB(0xFF, 72, 30, 20),
+                                    ),
+                                    child: Text('Update',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.deepOrange,
-                          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           textStyle: TextStyle(fontSize: 10),
                         ),
                         child: Text(
@@ -168,10 +299,66 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: Text(
+                              'Change Username',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.oswald(),
+                            ),
+                            content: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.width / 4,
+                              child: Column(
+                                children: [
+                                  TextFormField(
+                                    controller: _emailController,
+                                    cursorColor: Colors.black,
+                                    decoration: InputDecoration(
+                                        label: Text("Username"),
+                                        focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.black,
+                                            ))),
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            actions: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {
+
+                                      Navigator.pop(context);
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(20)),
+                                      backgroundColor:
+                                      Color.fromARGB(0xFF, 72, 30, 20),
+                                    ),
+                                    child: Text('Update',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.deepOrange,
-                          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           textStyle: TextStyle(fontSize: 10),
                         ),
                         child: Text(
@@ -183,6 +370,124 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                   ),
                   subtitle: Text(
                     'tacoman532',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+                Divider(),
+                ListTile(
+                  leading: Icon(
+                    Icons.person,
+                    color: Colors.deepOrange,
+                  ),
+                  title: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Password',
+                          style: TextStyle(
+                            color: Colors.deepOrange,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () => showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: Text(
+                              'Change Password',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.oswald(),
+                            ),
+                            content: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.width/1.8,
+                              child: Column(
+                                children: [
+                                  TextFormField(
+                                    controller: _emailController,
+                                    cursorColor: Colors.black,
+                                    decoration: InputDecoration(
+                                        label: Text("New Password"),
+                                        focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.black,
+                                            ))),
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                  TextFormField(
+                                    controller: _passwordController,
+                                    cursorColor: Colors.black,
+                                    decoration: InputDecoration(
+                                        label: Text("Confirm New Password"),
+                                        focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.black,
+                                            ))),
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                  TextFormField(
+                                    controller: _passwordController,
+                                    cursorColor: Colors.black,
+                                    decoration: InputDecoration(
+                                        label: Text("Old Password"),
+                                        focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.black,
+                                            ))),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            actions: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {
+
+                                      Navigator.pop(context);
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(20)),
+                                      backgroundColor:
+                                      Color.fromARGB(0xFF, 72, 30, 20),
+                                    ),
+                                    child: Text('Update',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.deepOrange,
+                          padding:
+                          EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          textStyle: TextStyle(fontSize: 10),
+                        ),
+                        child: Text(
+                          'Change Password',
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
+                  subtitle: Text(
+                    '**********',
                     style: TextStyle(
                       fontSize: 18,
                     ),

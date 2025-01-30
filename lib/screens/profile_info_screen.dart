@@ -290,7 +290,7 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                     children: [
                       Expanded(
                         child: Text(
-                          'Username',
+                          'Name',
                           style: TextStyle(
                             color: Colors.deepOrange,
                             fontSize: 20,
@@ -303,7 +303,7 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
                             title: Text(
-                              'Change Username',
+                              'Change Name',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.oswald(),
                             ),
@@ -316,7 +316,7 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                                     controller: _emailController,
                                     cursorColor: Colors.black,
                                     decoration: InputDecoration(
-                                        label: Text("Username"),
+                                        label: Text("Name"),
                                         focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Colors.black,
@@ -362,7 +362,7 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> {
                           textStyle: TextStyle(fontSize: 10),
                         ),
                         child: Text(
-                          'Change Username',
+                          'Change Name',
                           style: TextStyle(fontSize: 12, color: Colors.white),
                         ),
                       ),

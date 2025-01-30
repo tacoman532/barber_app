@@ -57,7 +57,7 @@ class _DrawerPageState extends State<DrawerPage> {
                 color: ColorConst.backgroundColor,
               ),
               child: Text(
-                'Barber App',
+                'StyleSync',
                 style: GoogleFonts.oswald(
                   textStyle: TextStyle(
                     color: ColorConst.primaryColor,
@@ -126,7 +126,7 @@ class _DrawerPageState extends State<DrawerPage> {
                 color: ColorConst.primaryColor,
               ),
               title: Text(
-                'Popular Barbers',
+                'Local Barbers',
                 style: TextStyle(
                   color: ColorConst.primaryColor,
                   fontSize: 24,
@@ -205,7 +205,7 @@ class _DrawerPageState extends State<DrawerPage> {
         return PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
           child: AppBarWidget(
-              title: "Popular Barbers"),
+              title: "Local Barbers"),
         );
       case 4:
         return PreferredSize(
